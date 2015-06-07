@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Faker</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+</resources>
