@@ -16,6 +16,7 @@ public class LoremTest extends AndroidTestCase {
     private Lorem lorem;
     private List<String> loremWords;
     private int positiveRandom = new Random().nextInt(31);
+    private String alphaNumericRegex = "^[a-zA-Z0-9]*$";
 
     @Before
     public void setUp() throws Exception {
@@ -48,6 +49,7 @@ public class LoremTest extends AndroidTestCase {
     public void testWordsWithInvalidArguments() throws Exception {
         try {
             lorem.words(0);
+            assertTrue(false);
         } catch (IllegalArgumentException e) {
             assertTrue(true);
         }
@@ -82,6 +84,7 @@ public class LoremTest extends AndroidTestCase {
     public void testSentencesWithInvalidArguments() throws Exception{
         try {
             lorem.sentences(0);
+            assertTrue(false);
         } catch (IllegalArgumentException e) {
             assertTrue(true);
         }
@@ -89,21 +92,33 @@ public class LoremTest extends AndroidTestCase {
 
     @Test
     public void testCharacter() throws Exception {
+        String randomCharacter = lorem.character();
 
+        assertTrue(randomCharacter.length() == 1);
+        assertTrue(randomCharacter.matches(alphaNumericRegex));
     }
 
     @Test
     public void testCharacters() throws Exception {
+        String randomCharacters = lorem.characters();
 
+        assertTrue(randomCharacters.length() == 255);
+        assertTrue(randomCharacters.matches(alphaNumericRegex));
     }
 
     @Test
     public void testCharactersWithArguments() throws Exception {
-
+        String randomCharacters = lorem.characters(positiveRandom);
+        assertTrue(randomCharacters.length() == positiveRandom);
     }
 
     @Test
     public void testCharactersInvalidArguments() throws Exception {
-
+        try {
+            lorem.characters(0);
+            assertTrue(false);
+        } catch (IllegalArgumentException e) {
+            assertTrue(true);
+        }
     }
 }
