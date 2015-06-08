@@ -15,13 +15,14 @@ public class LoremTest extends AndroidTestCase {
 
     private Lorem lorem;
     private List<String> loremWords;
-    private int positiveRandom = new Random().nextInt(31);
+    private int positiveRandom;
     private String alphaNumericRegex = "^[a-zA-Z0-9]*$";
 
     @Before
     public void setUp() throws Exception {
         lorem = new Lorem(getContext());
         loremWords = Arrays.asList(getContext().getResources().getStringArray(R.array.lorem_words));
+        positiveRandom = new Random().nextInt(31) + 1;
     }
 
     @Test
@@ -116,6 +117,41 @@ public class LoremTest extends AndroidTestCase {
     public void testCharactersInvalidArguments() throws Exception {
         try {
             lorem.characters(0);
+            assertTrue(false);
+        } catch (IllegalArgumentException e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testParagraph() throws Exception {
+        String paragraph = lorem.paragraph();
+
+        String [] numberOfSentences = paragraph.split("\\. ");
+
+        assertTrue(numberOfSentences.length >= 3);
+    }
+
+    @Test
+    public void testParagraphs() throws Exception {
+        String paragraphs = lorem.paragraphs();
+
+        assertTrue(paragraphs.contains("\n"));
+    }
+
+    @Test
+    public void testParagraphsWithArguments() throws Exception {
+        String paragraphs = lorem.paragraphs(positiveRandom);
+
+        int numberOfWhiteLines = paragraphs.split("\n").length;
+
+        assertTrue(numberOfWhiteLines == positiveRandom);
+    }
+
+    @Test
+    public  void testParagraphsWithInvalidArguments() throws Exception {
+        try {
+            lorem.paragraphs(0);
             assertTrue(false);
         } catch (IllegalArgumentException e) {
             assertTrue(true);

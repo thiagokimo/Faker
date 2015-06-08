@@ -17,6 +17,8 @@ public class Lorem extends FakerCoreComponent {
     public static final int DEFAULT_NUMBER_OF_CHARACTERS = 255;
     public static final String ALPHA_NUMERIC_CHARACTERS = "0123456789abcdefghijklmnopqrstuwvxyz";
 
+    public static final String INVALID_ARGUMENT_ERROR_MSG = "Argument should be bigger than 0";
+
     private List<String> loremWords;
 
     public Lorem(Context context) {
@@ -50,7 +52,7 @@ public class Lorem extends FakerCoreComponent {
     public String words(int numberOfWords) {
 
         if (numberOfWords < 1) {
-            throw new IllegalArgumentException("Number of words must be bigger than 0.");
+            throw new IllegalArgumentException(INVALID_ARGUMENT_ERROR_MSG);
         }
 
         List<String> loremWords = new ArrayList<>();
@@ -75,7 +77,7 @@ public class Lorem extends FakerCoreComponent {
     public String sentences(int numberOfSentences) {
 
         if (numberOfSentences < 1) {
-            throw new IllegalArgumentException("Number of sentences must be bigger than 0.");
+            throw new IllegalArgumentException(INVALID_ARGUMENT_ERROR_MSG);
         }
 
         List<String> sentences = new ArrayList<>();
@@ -98,7 +100,7 @@ public class Lorem extends FakerCoreComponent {
     public String characters(int numberOfCharacters) {
 
         if(numberOfCharacters < 1) {
-            throw new IllegalArgumentException("Number of characters must be higher than 0");
+            throw new IllegalArgumentException(INVALID_ARGUMENT_ERROR_MSG);
         }
 
         StringBuilder randomCharacters = new StringBuilder();
@@ -108,5 +110,33 @@ public class Lorem extends FakerCoreComponent {
         }
 
         return randomCharacters.toString();
+    }
+
+    public String paragraph() {
+        return paragraphs(1);
+    }
+
+    public String paragraphs() {
+        int randomNumberOfParagraphs = DEFAULT_RANDOM_NUMBERS_POOL[new Random().nextInt(DEFAULT_RANDOM_NUMBERS_POOL.length)];
+        return paragraphs(randomNumberOfParagraphs);
+    }
+
+    public String paragraphs(int numberOfParagraphs) {
+
+        if(numberOfParagraphs < 1) {
+            throw new IllegalArgumentException(INVALID_ARGUMENT_ERROR_MSG);
+        }
+
+        StringBuilder paragraphs = new StringBuilder();
+
+        for(int i = 0; i < numberOfParagraphs; i++) {
+            paragraphs.append(sentences());
+
+            if(i != numberOfParagraphs-1) {
+                paragraphs.append("\n");
+            }
+        }
+
+        return paragraphs.toString();
     }
 }
