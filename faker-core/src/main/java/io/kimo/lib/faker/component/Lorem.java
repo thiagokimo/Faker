@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import io.kimo.lib.faker.FakerCoreComponent;
+import io.kimo.lib.faker.CoreComponent;
 import io.kimo.lib.faker.R;
 
-public class Lorem extends FakerCoreComponent {
+public class Lorem extends CoreComponent {
 
     public static final int [] DEFAULT_RANDOM_NUMBERS_POOL = {3,4,5,6,7};
     public static final int DEFAULT_NUMBER_OF_CHARACTERS = 255;
@@ -31,7 +31,7 @@ public class Lorem extends FakerCoreComponent {
      * @return a String with the word
      */
     public String word() {
-        return loremWords.get(new Random().nextInt(31));
+        return loremWords.get(new Random().nextInt(loremWords.size()));
     }
 
     /**

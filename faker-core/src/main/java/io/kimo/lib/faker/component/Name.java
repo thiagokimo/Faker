@@ -6,10 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import io.kimo.lib.faker.FakerCoreComponent;
+import io.kimo.lib.faker.CoreComponent;
 import io.kimo.lib.faker.R;
 
-public class Name extends FakerCoreComponent {
+public class Name extends CoreComponent {
 
     private List<String> firstNames, lastNames, prefixes, suffixes, titleDescriptons, titleLevels, titleJobs;
 

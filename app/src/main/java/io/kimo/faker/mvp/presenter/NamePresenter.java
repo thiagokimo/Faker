@@ -16,20 +16,13 @@ public class NamePresenter extends BasePresenter {
     public void configureMainView() {
         NameView nameView = (NameView) view;
 
-        nameView.updateCompleteNameExample(Faker.with(context).Name
-                .completeName());
-        nameView.updateFullNameExample(Faker.with(context).Name
-                .fullName());
-        nameView.updateFirstNameExample(Faker.with(context).Name
-                .firstName());
-        nameView.updateLastNameExample(Faker.with(context).Name
-                .lastName());
-        nameView.updatePrefixExample(Faker.with(context).Name
-                .prefix());
-        nameView.updateSuffixExample(Faker.with(context).Name
-                .suffix());
-        nameView.updateTitleExample(Faker.with(context).Name
-                .title());
+        nameView.updateCompleteNameExample(Faker.with(context).Name.completeName());
+        nameView.updateFullNameExample(Faker.with(context).Name.fullName());
+        nameView.updateFirstNameExample(Faker.with(context).Name.firstName());
+        nameView.updateLastNameExample(Faker.with(context).Name.lastName());
+        nameView.updatePrefixExample(Faker.with(context).Name.prefix());
+        nameView.updateSuffixExample(Faker.with(context).Name.suffix());
+        nameView.updateTitleExample(Faker.with(context).Name.title());
     }
 
     @Override

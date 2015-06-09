@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="area_code_phone_mask">(###) ###-####</string>
+    <string name="country_code_phone_mask">##-###-####</string>
+</resources>

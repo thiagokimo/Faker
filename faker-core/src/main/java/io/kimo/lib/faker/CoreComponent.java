@@ -2,11 +2,11 @@ package io.kimo.lib.faker;
 
 import android.content.Context;
 
-public abstract class FakerCoreComponent {
+public abstract class CoreComponent {
 
     protected Context context;
 
-    public FakerCoreComponent(Context context) {
+    public CoreComponent(Context context) {
         if(context == null) {
             throw new IllegalArgumentException("Context must not be null.");
         }

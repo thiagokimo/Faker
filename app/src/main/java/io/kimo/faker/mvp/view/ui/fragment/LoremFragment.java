@@ -8,15 +8,15 @@ import io.kimo.faker.R;
 import io.kimo.faker.mvp.presenter.LoremPresenter;
 import io.kimo.faker.mvp.BaseView;
 
-public class LoremView extends BaseView implements io.kimo.faker.mvp.view.LoremView {
+public class LoremFragment extends BaseView implements io.kimo.faker.mvp.view.LoremView {
 
     private View mainView, loadingView;
     private TextView character, characters, word, words, sentence, sentences, paragraph, paragraphs;
 
     private LoremPresenter presenter;
 
-    public static LoremView newInstance() {
-        return new LoremView();
+    public static LoremFragment newInstance() {
+        return new LoremFragment();
     }
 
     @Override

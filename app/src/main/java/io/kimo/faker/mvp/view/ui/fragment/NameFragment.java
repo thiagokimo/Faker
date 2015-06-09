@@ -5,18 +5,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import io.kimo.faker.R;
-import io.kimo.faker.mvp.presenter.NamePresenter;
 import io.kimo.faker.mvp.BaseView;
+import io.kimo.faker.mvp.presenter.NamePresenter;
+import io.kimo.faker.mvp.view.NameView;
 
-public class NameView extends BaseView implements io.kimo.faker.mvp.view.NameView {
+public class NameFragment extends BaseView implements NameView {
 
     private View mainView, loadingView;
     private TextView completeName, fullName, firstName, lastName, prefix, suffix, title;
 
     private NamePresenter presenter;
 
-    public static NameView newInstance() {
-        return new NameView();
+    public static NameFragment newInstance() {
+        return new NameFragment();
     }
 
     @Override

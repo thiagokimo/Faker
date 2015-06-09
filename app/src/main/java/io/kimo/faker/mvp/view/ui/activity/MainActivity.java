@@ -14,13 +14,17 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import io.kimo.faker.R;
-import io.kimo.faker.mvp.view.ui.fragment.LoremView;
-import io.kimo.faker.mvp.view.ui.fragment.NameView;
+import io.kimo.faker.mvp.view.ui.fragment.LoremFragment;
+import io.kimo.faker.mvp.view.ui.fragment.NameFragment;
+import io.kimo.faker.mvp.view.ui.fragment.NumberFragment;
+import io.kimo.faker.mvp.view.ui.fragment.PhoneFragment;
 
 
 public class MainActivity extends AppCompatActivity {
     public static final int LOREM_FRAGMENT = 0;
     public static final int NAME_FRAGMENT = 1;
+    public static final int NUMBER_FRAGMENT = 2;
+    public static final int PHONE_FRAGMENT = 3;
 
     private Toolbar toolbar;
     private Drawer drawer;
@@ -57,9 +61,16 @@ public class MainActivity extends AppCompatActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem()
                                 .withName("Lorem")
-
                                 .withIdentifier(LOREM_FRAGMENT),
-                        new PrimaryDrawerItem().withName("Name").withIdentifier(NAME_FRAGMENT)
+                        new PrimaryDrawerItem()
+                                .withName("Name")
+                                .withIdentifier(NAME_FRAGMENT),
+                        new PrimaryDrawerItem()
+                                .withName("Number")
+                                .withIdentifier(NUMBER_FRAGMENT),
+                        new PrimaryDrawerItem()
+                                .withName("Phone")
+                                .withIdentifier(PHONE_FRAGMENT)
 
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -90,10 +101,16 @@ public class MainActivity extends AppCompatActivity {
     private void showFragment(int flag) {
         switch (flag) {
             case LOREM_FRAGMENT:
-                replace(LoremView.newInstance());
+                replace(LoremFragment.newInstance());
                 break;
             case NAME_FRAGMENT:
-                replace(NameView.newInstance());
+                replace(NameFragment.newInstance());
+                break;
+            case NUMBER_FRAGMENT:
+                replace(NumberFragment.newInstance());
+                break;
+            case PHONE_FRAGMENT:
+                replace(PhoneFragment.newInstance());
                 break;
         }
     }
