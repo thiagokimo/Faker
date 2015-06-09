@@ -1,4 +1,4 @@
-package io.kimo.faker;
+package io.kimo.faker.mvp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseView extends Fragment {
 
     @Nullable
     @Override
@@ -18,7 +18,22 @@ public abstract class BaseFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        startPresenter();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        stopPresenter();
+    }
+
     public abstract int getLayoutResource();
     public abstract void mapGUI(View view);
     public abstract void configureGUI();
+
+    public abstract void startPresenter();
+    public abstract void stopPresenter();
 }

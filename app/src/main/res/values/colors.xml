@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="faker_primary_color">#FF5722</color>
+    <color name="faker_secondary_color">#E64A19</color>
+    <color name="faker_accent_color">#03A9F4</color>
+</resources>

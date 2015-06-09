@@ -3,10 +3,9 @@
     <style name="AppTheme" parent="AppTheme.Base"/>
 
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#FF5722</item>
-        <item name="colorPrimaryDark">#E64A19</item>
-        <item name="colorAccent">#03A9F4</item>
-        <item name="colorControlHighlight">#FFCCBC</item>
+        <item name="colorPrimary">@color/faker_primary_color</item>
+        <item name="colorPrimaryDark">@color/faker_secondary_color</item>
+        <item name="colorAccent">@color/faker_accent_color</item>
         <item name="android:textColorPrimary">#212121</item>
     </style>
 
