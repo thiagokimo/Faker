@@ -14,6 +14,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import io.kimo.faker.R;
+import io.kimo.faker.mvp.view.ui.fragment.InternetFragment;
 import io.kimo.faker.mvp.view.ui.fragment.LoremFragment;
 import io.kimo.faker.mvp.view.ui.fragment.NameFragment;
 import io.kimo.faker.mvp.view.ui.fragment.NumberFragment;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int NAME_FRAGMENT = 1;
     public static final int NUMBER_FRAGMENT = 2;
     public static final int PHONE_FRAGMENT = 3;
+    public static final int INTERNET_FRAGMENT = 4;
 
     private Toolbar toolbar;
     private Drawer drawer;
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 .withActivity(this)
                 .withHeader(R.layout.header_drawer)
                 .withToolbar(toolbar)
+                .withTranslucentStatusBar(true)
                 .addDrawerItems(
                         new PrimaryDrawerItem()
                                 .withName("Lorem")
@@ -70,7 +73,10 @@ public class MainActivity extends AppCompatActivity {
                                 .withIdentifier(NUMBER_FRAGMENT),
                         new PrimaryDrawerItem()
                                 .withName("Phone")
-                                .withIdentifier(PHONE_FRAGMENT)
+                                .withIdentifier(PHONE_FRAGMENT),
+                        new PrimaryDrawerItem()
+                                .withName("Internet")
+                                .withIdentifier(INTERNET_FRAGMENT)
 
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -111,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case PHONE_FRAGMENT:
                 replace(PhoneFragment.newInstance());
+                break;
+            case INTERNET_FRAGMENT:
+                replace(InternetFragment.newInstance());
                 break;
         }
     }

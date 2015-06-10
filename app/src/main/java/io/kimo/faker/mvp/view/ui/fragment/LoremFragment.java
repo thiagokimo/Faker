@@ -5,10 +5,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import io.kimo.faker.R;
-import io.kimo.faker.mvp.presenter.LoremPresenter;
 import io.kimo.faker.mvp.BaseView;
+import io.kimo.faker.mvp.presenter.LoremPresenter;
+import io.kimo.faker.mvp.view.LoremView;
 
-public class LoremFragment extends BaseView implements io.kimo.faker.mvp.view.LoremView {
+public class LoremFragment extends BaseView implements LoremView {
 
     private View mainView, loadingView;
     private TextView character, characters, word, words, sentence, sentences, paragraph, paragraphs;

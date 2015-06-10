@@ -51,7 +51,7 @@ public class Number extends CoreComponent {
             randomNumbers.append(positiveDigit());
         }
 
-        return Integer.parseInt(randomNumbers.toString());
+        return Math.abs(Integer.parseInt(randomNumbers.toString()));
     }
 
     public int positiveNumber() {
