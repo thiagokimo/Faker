@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.accountswitcher.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
@@ -56,9 +57,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void configureDrawer(Bundle savedInstanceState) {
+
         drawer = new DrawerBuilder()
                 .withActivity(this)
-                .withHeader(R.layout.header_drawer)
+                .withAccountHeader(
+                        new AccountHeaderBuilder()
+                                .withActivity(this)
+                                .withHeaderBackground(R.drawable.drawer_background)
+                                .withProfileImagesClickable(false)
+                                .build()
+                )
                 .withToolbar(toolbar)
                 .withTranslucentStatusBar(true)
                 .addDrawerItems(
