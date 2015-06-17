@@ -1,16 +1,39 @@
-package io.kimo.lib.faker.component;
+package io.kimo.lib.faker.component.number;
 
 import android.content.Context;
 
 import java.util.Random;
 
-import io.kimo.lib.faker.CoreComponent;
+import io.kimo.lib.faker.component.FakerNumericComponent;
 
-public class Number extends CoreComponent {
+public class NumberComponent extends FakerNumericComponent {
 
-    public Number(Context context) {
+    public NumberComponent(Context context) {
         super(context);
     }
+
+    @Override
+    public Number randomNumber() {
+        int method = (int)(Math.random() * 10);
+
+        switch (method % 6) {
+            case 0:
+                return new Integer(digit());
+            case 1:
+                return new Integer(positiveDigit());
+            case 2:
+                return new Integer(negativeDigit());
+            case 3:
+                return new Integer(number());
+            case 4:
+                return new Integer(positiveNumber());
+            case 5:
+                return new Integer(negativeNumber());
+            default:
+                return new Integer(0);
+        }
+    }
+
 
     private int randomNumberInRangePositiveOrNegative(int min, int max) {
         return new Random().nextInt((max - min) + 1) + min;

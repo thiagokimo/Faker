@@ -1,4 +1,4 @@
-package io.kimo.lib.faker.component;
+package io.kimo.lib.faker.component.text;
 
 import android.content.Context;
 
@@ -6,14 +6,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import io.kimo.lib.faker.CoreComponent;
 import io.kimo.lib.faker.R;
+import io.kimo.lib.faker.component.FakerTextComponent;
 
-public class Name extends CoreComponent {
+public class NameComponent extends FakerTextComponent {
 
     private List<String> firstNames, lastNames, prefixes, suffixes, titleDescriptons, titleLevels, titleJobs;
 
-    public Name(Context context) {
+    public NameComponent(Context context) {
         super(context);
         firstNames = Arrays.asList(context.getResources().getStringArray(R.array.first_names));
         lastNames = Arrays.asList(context.getResources().getStringArray(R.array.last_names));
@@ -22,6 +22,32 @@ public class Name extends CoreComponent {
         titleDescriptons = Arrays.asList(context.getResources().getStringArray(R.array.title_descriptions));
         titleLevels = Arrays.asList(context.getResources().getStringArray(R.array.title_levels));
         titleJobs = Arrays.asList(context.getResources().getStringArray(R.array.title_jobs));
+    }
+
+    @Override
+    public String randomText() {
+        int method = (int)(Math.random() * 10);
+
+        switch (method % 7) {
+            case 0:
+                return firstName();
+            case 1:
+                return lastName();
+            case 2:
+                return fullName();
+            case 3:
+                return completeName();
+            case 4:
+                return prefix();
+            case 5:
+                return suffix();
+            case 6:
+                return title();
+            default:
+                return "";
+        }
+
+
     }
 
     public String firstName() {

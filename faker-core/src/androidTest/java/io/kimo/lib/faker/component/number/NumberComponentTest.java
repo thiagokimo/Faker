@@ -1,23 +1,23 @@
-package io.kimo.lib.faker.component;
+package io.kimo.lib.faker.component.number;
 
 import android.test.AndroidTestCase;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class NumberTest extends AndroidTestCase {
+public class NumberComponentTest extends AndroidTestCase {
 
-    private Number number;
+    private NumberComponent numberComponent;
 
     @Before
     public void setUp() throws Exception {
-        number = new Number(getContext());
+        numberComponent = new NumberComponent(getContext());
     }
 
     @Test
     public void testDigit() throws Exception {
 
-        int randomDigit = number.digit();
+        int randomDigit = numberComponent.digit();
         assertTrue(randomDigit > -10 && randomDigit < 10);
 
     }
@@ -25,7 +25,7 @@ public class NumberTest extends AndroidTestCase {
     @Test
     public void testPositiveDigit() throws Exception {
 
-        int positiveDigit = number.positiveDigit();
+        int positiveDigit = numberComponent.positiveDigit();
         assertTrue(positiveDigit >= 0 && positiveDigit < 10);
 
     }
@@ -33,7 +33,7 @@ public class NumberTest extends AndroidTestCase {
     @Test
     public void testNegativeDigit() throws Exception {
 
-        int negativeDigit = number.negativeDigit();
+        int negativeDigit = numberComponent.negativeDigit();
         assertTrue(negativeDigit < 0 && negativeDigit > -10);
 
     }
@@ -42,7 +42,7 @@ public class NumberTest extends AndroidTestCase {
     public void testNumbers() throws Exception {
 
         try {
-            Integer.parseInt(number.number() + "");
+            Integer.parseInt(numberComponent.number() + "");
             assertTrue(true);
         } catch (NumberFormatException e) {
             assertTrue(false);
@@ -52,14 +52,14 @@ public class NumberTest extends AndroidTestCase {
 
     @Test
     public void testNumbersWithArguments() throws Exception {
-        String randomNumber = number.number(3) + "";
+        String randomNumber = numberComponent.number(3) + "";
         assertTrue(randomNumber.length() == 3);
     }
 
     @Test
     public void testNumbersWithInvalidArguments() throws Exception {
         try {
-            number.number(0);
+            numberComponent.number(0);
             assertTrue(false);
         } catch (IllegalArgumentException e) {
             assertTrue(true);
@@ -68,13 +68,18 @@ public class NumberTest extends AndroidTestCase {
 
     @Test
     public void testPositiveNumbers() throws Exception {
-        int randomPositiveNumber = number.positiveNumber();
+        int randomPositiveNumber = numberComponent.positiveNumber();
         assertTrue(randomPositiveNumber > -1);
     }
 
     @Test
     public void testNegativeNumbers() throws Exception {
-        int randomPositiveNumber = number.negativeNumber();
+        int randomPositiveNumber = numberComponent.negativeNumber();
         assertTrue(randomPositiveNumber < 0);
+    }
+
+    @Test
+    public void testRandomNumber() throws Exception {
+        assertTrue(numberComponent.randomNumber() instanceof Number);
     }
 }

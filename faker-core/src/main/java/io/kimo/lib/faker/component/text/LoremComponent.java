@@ -1,4 +1,4 @@
-package io.kimo.lib.faker.component;
+package io.kimo.lib.faker.component.text;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import io.kimo.lib.faker.CoreComponent;
 import io.kimo.lib.faker.R;
+import io.kimo.lib.faker.component.FakerTextComponent;
 
-public class Lorem extends CoreComponent {
+public class LoremComponent extends FakerTextComponent {
 
     public static final int [] DEFAULT_RANDOM_NUMBERS_POOL = {3,4,5,6,7};
     public static final int DEFAULT_NUMBER_OF_CHARACTERS = 255;
@@ -21,9 +21,28 @@ public class Lorem extends CoreComponent {
 
     private List<String> loremWords;
 
-    public Lorem(Context context) {
+    public LoremComponent(Context context) {
         super(context);
         loremWords = Arrays.asList(context.getResources().getStringArray(R.array.lorem_words));
+    }
+
+    @Override
+    public String randomText() {
+
+        int method = (int)(Math.random() * 10);
+
+        switch (method % 4) {
+            case 0:
+                return characters();
+            case 1:
+                return words();
+            case 2:
+                return sentences();
+            case 3:
+                return paragraphs();
+            default:
+                return "";
+        }
     }
 
     /**

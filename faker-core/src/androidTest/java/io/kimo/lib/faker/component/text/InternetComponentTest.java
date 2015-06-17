@@ -1,4 +1,4 @@
-package io.kimo.lib.faker.component;
+package io.kimo.lib.faker.component.text;
 
 import android.test.AndroidTestCase;
 import android.text.TextUtils;
@@ -12,11 +12,11 @@ import java.util.List;
 
 import io.kimo.lib.faker.R;
 
-public class InternetTest extends AndroidTestCase {
+public class InternetComponentTest extends AndroidTestCase {
 
-    private Internet internet;
-    private Name name;
-    private Lorem lorem;
+    private InternetComponent internetComponent;
+    private NameComponent nameComponent;
+    private LoremComponent loremComponent;
     private List<String> domainSuffixes;
     private static final String EMAIL_PATTERN =
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -24,16 +24,16 @@ public class InternetTest extends AndroidTestCase {
 
     @Before
     public void setUp() throws Exception {
-        internet = new Internet(getContext());
-        name = new Name(getContext());
-        lorem = new Lorem(getContext());
+        internetComponent = new InternetComponent(getContext());
+        nameComponent = new NameComponent(getContext());
+        loremComponent = new LoremComponent(getContext());
         domainSuffixes = Arrays.asList(getContext().getResources().getStringArray(R.array.domain_suffixes));
     }
 
     @Test
     public void testEmail() throws Exception {
         for(int i = 0; i < 1000; i++) {
-            String randomEmail = internet.email();
+            String randomEmail = internetComponent.email();
 
             assertTrue(randomEmail.matches(EMAIL_PATTERN));
             assertTrue(randomEmail.toLowerCase().equals(randomEmail));
@@ -43,11 +43,11 @@ public class InternetTest extends AndroidTestCase {
     @Test
     public void testEmailWithArguments() throws Exception {
         for(int i = 0; i < 1000; i++) {
-            String randomName = name.firstName().toLowerCase();
-            String randomDomain = name.lastName().toLowerCase();
-            String randomDomainSuffix = internet.domainSuffix();
+            String randomName = nameComponent.firstName().toLowerCase();
+            String randomDomain = nameComponent.lastName().toLowerCase();
+            String randomDomainSuffix = internetComponent.domainSuffix();
 
-            String randomEmail = internet.email(randomName, randomDomain, randomDomainSuffix);
+            String randomEmail = internetComponent.email(randomName, randomDomain, randomDomainSuffix);
 
             assertTrue(randomEmail.contains(randomName));
             assertTrue(randomEmail.contains(randomDomain));
@@ -59,22 +59,22 @@ public class InternetTest extends AndroidTestCase {
     @Test
     public void testDomainSuffix() throws Exception {
         for(int i = 0; i < 1000; i++) {
-            assertTrue(domainSuffixes.contains(internet.domainSuffix().replace(".", "")));
+            assertTrue(domainSuffixes.contains(internetComponent.domainSuffix().replace(".", "")));
         }
     }
 
     @Test
     public void testDomainSuffixWithArguments() throws Exception {
         for(int i = 0; i < 1000; i++) {
-            String randomSuffix = lorem.characters(3);
-            assertTrue(internet.domainSuffix(randomSuffix).contains(randomSuffix));
+            String randomSuffix = loremComponent.characters(3);
+            assertTrue(internetComponent.domainSuffix(randomSuffix).contains(randomSuffix));
         }
     }
 
     @Test
     public void testDomain() throws Exception {
         for(int i = 0; i < 1000; i++) {
-            String randomDomain = internet.domain();
+            String randomDomain = internetComponent.domain();
             assertFalse(TextUtils.isEmpty(randomDomain));
             assertTrue(randomDomain.toLowerCase().equals(randomDomain));
         }
@@ -83,7 +83,7 @@ public class InternetTest extends AndroidTestCase {
     @Test
     public void testUrl() throws Exception {
         for(int i = 0; i < 1000; i++) {
-            String randomURL = internet.url();
+            String randomURL = internetComponent.url();
             assertTrue(URLUtil.isValidUrl(randomURL));
             assertTrue(randomURL.toLowerCase().equals(randomURL));
         }
@@ -93,12 +93,17 @@ public class InternetTest extends AndroidTestCase {
     public void testUrlWithArguments() throws Exception {
         for(int i = 0; i < 1000; i++) {
 
-            String randomDomain = internet.domain();
-            String randomSuffix = internet.domainSuffix();
+            String randomDomain = internetComponent.domain();
+            String randomSuffix = internetComponent.domainSuffix();
 
-            String randomURL = internet.url(randomDomain, randomSuffix);
+            String randomURL = internetComponent.url(randomDomain, randomSuffix);
             assertTrue(randomURL.contains(randomDomain));
             assertTrue(randomURL.contains(randomSuffix));
         }
+    }
+
+    @Test
+    public void testRandomText() throws Exception {
+        assertTrue(!TextUtils.isEmpty(internetComponent.randomText()));
     }
 }

@@ -1,20 +1,37 @@
-package io.kimo.lib.faker.component;
+package io.kimo.lib.faker.component.text;
 
 import android.content.Context;
 
-import io.kimo.lib.faker.CoreComponent;
-import io.kimo.lib.faker.R;
+import java.lang.*;
 
-public class Phone extends CoreComponent {
+import io.kimo.lib.faker.R;
+import io.kimo.lib.faker.component.FakerTextComponent;
+import io.kimo.lib.faker.component.number.NumberComponent;
+
+public class PhoneComponent extends FakerTextComponent {
 
     private String areaCodeMask, countryCodeMask;
-    private Number number;
+    private NumberComponent numberComponent;
 
-    public Phone(Context context) {
+    public PhoneComponent(Context context) {
         super(context);
-        number = new Number(context);
+        numberComponent = new NumberComponent(context);
         areaCodeMask = context.getResources().getString(R.string.area_code_phone_mask);
         countryCodeMask = context.getResources().getString(R.string.country_code_phone_mask);
+    }
+
+    @Override
+    public String randomText() {
+        int method = (int)(Math.random() * 10);
+
+        switch (method % 2) {
+            case 0:
+                return phoneWithAreaCode();
+            case 1:
+                return phoneWithCountryCode();
+            default:
+                return "";
+        }
     }
 
     private String numbersInMask(String mask, char maskPlaceholder) {
@@ -25,7 +42,7 @@ public class Phone extends CoreComponent {
             char currentChar = mask.charAt(i);
 
             if(currentChar == maskPlaceholder) {
-                phoneInMask.append(number.positiveDigit());
+                phoneInMask.append(numberComponent.positiveDigit());
             } else {
                 phoneInMask.append(currentChar);
             }
