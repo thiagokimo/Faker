@@ -20,6 +20,7 @@ import io.kimo.faker.mvp.view.ui.fragment.LoremFragment;
 import io.kimo.faker.mvp.view.ui.fragment.NameFragment;
 import io.kimo.faker.mvp.view.ui.fragment.NumberFragment;
 import io.kimo.faker.mvp.view.ui.fragment.PhoneFragment;
+import io.kimo.faker.mvp.view.ui.fragment.UrlFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int NUMBER_FRAGMENT = 2;
     public static final int PHONE_FRAGMENT = 3;
     public static final int INTERNET_FRAGMENT = 4;
+    public static final int URL_FRAGMENT = 5;
 
     private Toolbar toolbar;
     private Drawer drawer;
@@ -84,7 +86,10 @@ public class MainActivity extends AppCompatActivity {
                                 .withIdentifier(PHONE_FRAGMENT),
                         new PrimaryDrawerItem()
                                 .withName("Internet")
-                                .withIdentifier(INTERNET_FRAGMENT)
+                                .withIdentifier(INTERNET_FRAGMENT),
+                        new PrimaryDrawerItem()
+                                .withName("Url")
+                                .withIdentifier(URL_FRAGMENT)
 
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -129,6 +134,8 @@ public class MainActivity extends AppCompatActivity {
             case INTERNET_FRAGMENT:
                 replace(InternetFragment.newInstance());
                 break;
+            case URL_FRAGMENT:
+                replace(UrlFragment.newInstance());
         }
     }
 

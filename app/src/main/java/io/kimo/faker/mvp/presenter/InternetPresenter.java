@@ -16,10 +16,10 @@ public class InternetPresenter extends BasePresenter{
     public void configureMainView() {
         InternetView internetView = (InternetView) view;
 
-        internetView.updateEmail(Faker.with(context).Internet.email());
-        internetView.updateURL(Faker.with(context).Internet.url());
-        internetView.updateDomain(Faker.with(context).Internet.domain());
-        internetView.updateDomainSuffix(Faker.with(context).Internet.domainSuffix());
+        internetView.updateEmailExample(Faker.with(context).Internet.email());
+        internetView.updateURLExample(Faker.with(context).Internet.url());
+        internetView.updateDomainExample(Faker.with(context).Internet.domain());
+        internetView.updateDomainSuffixExample(Faker.with(context).Internet.domainSuffix());
     }
 
     @Override

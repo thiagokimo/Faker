@@ -4,9 +4,10 @@ import android.content.Context;
 
 import java.util.Random;
 
+import io.kimo.lib.faker.api.NumberAPI;
 import io.kimo.lib.faker.component.FakerNumericComponent;
 
-public class NumberComponent extends FakerNumericComponent {
+public class NumberComponent extends FakerNumericComponent implements NumberAPI {
 
     public NumberComponent(Context context) {
         super(context);
@@ -34,23 +35,26 @@ public class NumberComponent extends FakerNumericComponent {
         }
     }
 
-
     private int randomNumberInRangePositiveOrNegative(int min, int max) {
         return new Random().nextInt((max - min) + 1) + min;
     }
 
+    @Override
     public int digit() {
         return randomNumberInRangePositiveOrNegative(-9, 9);
     }
 
+    @Override
     public int positiveDigit() {
         return randomNumberInRangePositiveOrNegative(0, 9);
     }
 
+    @Override
     public int negativeDigit() {
         return randomNumberInRangePositiveOrNegative(-9,-1);
     }
 
+    @Override
     public int number() {
 
         int randomSignal = (int) Math.random() * 10;
@@ -62,25 +66,28 @@ public class NumberComponent extends FakerNumericComponent {
         }
     }
 
-    public int number(int amountOfNumbers) {
+    @Override
+    public int number(int amountOfDigits) {
 
-        if(amountOfNumbers < 1) {
+        if(amountOfDigits < 1) {
             throw new IllegalArgumentException("Argument must be bigger than 0");
         }
 
         StringBuilder randomNumbers = new StringBuilder();
 
-        for(int i = 0; i < amountOfNumbers; i++) {
+        for(int i = 0; i < amountOfDigits; i++) {
             randomNumbers.append(positiveDigit());
         }
 
         return Math.abs(Integer.parseInt(randomNumbers.toString()));
     }
 
+    @Override
     public int positiveNumber() {
         return Math.abs(number());
     }
 
+    @Override
     public int negativeNumber() {
         return -positiveNumber();
     }

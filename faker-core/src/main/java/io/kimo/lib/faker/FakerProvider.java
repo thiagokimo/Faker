@@ -11,6 +11,7 @@ import io.kimo.lib.faker.component.text.InternetComponent;
 import io.kimo.lib.faker.component.text.LoremComponent;
 import io.kimo.lib.faker.component.text.NameComponent;
 import io.kimo.lib.faker.component.text.PhoneComponent;
+import io.kimo.lib.faker.component.text.UrlComponent;
 
 public class FakerProvider {
 
@@ -19,6 +20,7 @@ public class FakerProvider {
     public static NumberComponent Number;
     public static PhoneComponent Phone;
     public static InternetComponent Internet;
+    public static UrlComponent Url;
 
     public FakerProvider(Context context) {
         Lorem = new LoremComponent(context);
@@ -26,6 +28,7 @@ public class FakerProvider {
         Number = new NumberComponent(context);
         Phone = new PhoneComponent(context);
         Internet = new InternetComponent(context);
+        Url = new UrlComponent(context);
     }
 
     /**
@@ -42,7 +45,7 @@ public class FakerProvider {
     }
 
     /**
-     * Fill a TExtView with a specific FakerNumericComponent
+     * Fill a TextView with a specific FakerNumericComponent
      * @param view
      * @param component
      */

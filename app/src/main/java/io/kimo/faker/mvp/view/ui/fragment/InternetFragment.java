@@ -52,22 +52,22 @@ public class InternetFragment extends BaseView implements InternetView {
     }
 
     @Override
-    public void updateEmail(String value) {
+    public void updateEmailExample(String value) {
         email.setText(value);
     }
 
     @Override
-    public void updateURL(String value) {
+    public void updateURLExample(String value) {
         url.setText(value);
     }
 
     @Override
-    public void updateDomain(String value) {
+    public void updateDomainExample(String value) {
         domain.setText(value);
     }
 
     @Override
-    public void updateDomainSuffix(String value) {
+    public void updateDomainSuffixExample(String value) {
         domainSuffix.setText(value);
     }
 

@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.Random;
 
 import io.kimo.lib.faker.R;
+import io.kimo.lib.faker.api.InternetAPI;
 import io.kimo.lib.faker.component.FakerTextComponent;
 
-public class InternetComponent extends FakerTextComponent {
+public class InternetComponent extends FakerTextComponent implements InternetAPI {
 
     private NameComponent nameComponent;
     private List<String> domainSuffix;
@@ -38,31 +39,38 @@ public class InternetComponent extends FakerTextComponent {
         }
     }
 
+    @Override
     public String email() {
         return email(nameComponent.firstName(), domain(), domainSuffix());
     }
 
-    public String email(String name, String domain, String domainSuffix) {
-        return (name + "@" + domain + domainSuffix).toLowerCase();
+    @Override
+    public String email(String name, String domain, String suffix) {
+        return (name + "@" + domain + suffix).toLowerCase();
     }
 
+    @Override
     public String domain() {
         return nameComponent.lastName().toLowerCase();
     }
 
+    @Override
     public String domainSuffix() {
         return domainSuffix(domainSuffix.get(new Random().nextInt(domainSuffix.size())));
     }
 
+    @Override
     public String domainSuffix(String suffix) {
         return "."+suffix;
     }
 
+    @Override
     public String url() {
         return url(nameComponent.lastName(), domainSuffix());
     }
 
-    public String url(String domain, String domainSuffix) {
-        return ("http://" + domain + domainSuffix).toLowerCase();
+    @Override
+    public String url(String domain, String suffix) {
+        return ("http://" + domain + suffix).toLowerCase();
     }
 }

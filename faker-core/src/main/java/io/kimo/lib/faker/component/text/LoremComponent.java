@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.Random;
 
 import io.kimo.lib.faker.R;
+import io.kimo.lib.faker.api.LoremAPI;
 import io.kimo.lib.faker.component.FakerTextComponent;
 
-public class LoremComponent extends FakerTextComponent {
+public class LoremComponent extends FakerTextComponent implements LoremAPI {
 
     public static final int [] DEFAULT_RANDOM_NUMBERS_POOL = {3,4,5,6,7};
     public static final int DEFAULT_NUMBER_OF_CHARACTERS = 255;
@@ -49,6 +50,7 @@ public class LoremComponent extends FakerTextComponent {
      * Provides a random words from the words list
      * @return a String with the word
      */
+    @Override
     public String word() {
         return loremWords.get(new Random().nextInt(loremWords.size()));
     }
@@ -58,6 +60,7 @@ public class LoremComponent extends FakerTextComponent {
      * The amount of words varies from 3 to 7.
      * @return a String with the words
      */
+    @Override
     public String words() {
         int numberOfWords = DEFAULT_RANDOM_NUMBERS_POOL[new Random().nextInt(DEFAULT_RANDOM_NUMBERS_POOL.length)];
         return words(numberOfWords);
@@ -68,6 +71,7 @@ public class LoremComponent extends FakerTextComponent {
      * @param numberOfWords
      * @return a String with the words
      */
+    @Override
     public String words(int numberOfWords) {
 
         if (numberOfWords < 1) {
@@ -83,16 +87,19 @@ public class LoremComponent extends FakerTextComponent {
         return TextUtils.join(" ", loremWords);
     }
 
+    @Override
     public String sentence() {
         String randomWords = words();
         return randomWords.substring(0,1).toUpperCase() + randomWords.substring(1) + ".";
     }
 
+    @Override
     public String sentences() {
         int randomNumberOfSentences = DEFAULT_RANDOM_NUMBERS_POOL[new Random().nextInt(DEFAULT_RANDOM_NUMBERS_POOL.length)];
         return sentences(randomNumberOfSentences);
     }
 
+    @Override
     public String sentences(int numberOfSentences) {
 
         if (numberOfSentences < 1) {
@@ -108,14 +115,17 @@ public class LoremComponent extends FakerTextComponent {
         return TextUtils.join(" ", sentences);
     }
 
+    @Override
     public String character() {
         return characters(1);
     }
 
+    @Override
     public String characters() {
         return characters(DEFAULT_NUMBER_OF_CHARACTERS);
     }
 
+    @Override
     public String characters(int numberOfCharacters) {
 
         if(numberOfCharacters < 1) {
@@ -131,15 +141,18 @@ public class LoremComponent extends FakerTextComponent {
         return randomCharacters.toString();
     }
 
+    @Override
     public String paragraph() {
         return paragraphs(1);
     }
 
+    @Override
     public String paragraphs() {
         int randomNumberOfParagraphs = DEFAULT_RANDOM_NUMBERS_POOL[new Random().nextInt(DEFAULT_RANDOM_NUMBERS_POOL.length)];
         return paragraphs(randomNumberOfParagraphs);
     }
 
+    @Override
     public String paragraphs(int numberOfParagraphs) {
 
         if(numberOfParagraphs < 1) {

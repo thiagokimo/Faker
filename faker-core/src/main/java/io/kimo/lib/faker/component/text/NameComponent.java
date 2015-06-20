@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.Random;
 
 import io.kimo.lib.faker.R;
+import io.kimo.lib.faker.api.NameAPI;
 import io.kimo.lib.faker.component.FakerTextComponent;
 
-public class NameComponent extends FakerTextComponent {
+public class NameComponent extends FakerTextComponent implements NameAPI {
 
     private List<String> firstNames, lastNames, prefixes, suffixes, titleDescriptons, titleLevels, titleJobs;
 
@@ -50,30 +51,37 @@ public class NameComponent extends FakerTextComponent {
 
     }
 
+    @Override
     public String firstName() {
         return firstNames.get(new Random().nextInt(firstNames.size()));
     }
 
+    @Override
     public String lastName() {
         return lastNames.get(new Random().nextInt(lastNames.size()));
     }
 
+    @Override
     public String fullName() {
         return firstName() + " " + lastName();
     }
 
+    @Override
     public String completeName() {
         return prefix() + " " + firstName() + " " + lastName() + " " + suffix();
     }
 
+    @Override
     public String prefix() {
         return prefixes.get(new Random().nextInt(prefixes.size()));
     }
 
+    @Override
     public String suffix() {
         return suffixes.get(new Random().nextInt(suffixes.size()));
     }
 
+    @Override
     public String title() {
         return titleDescriptons.get(new Random().nextInt(titleDescriptons.size())) +
                 " " +

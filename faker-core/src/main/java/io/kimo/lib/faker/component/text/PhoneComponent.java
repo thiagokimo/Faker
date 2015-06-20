@@ -5,10 +5,11 @@ import android.content.Context;
 import java.lang.*;
 
 import io.kimo.lib.faker.R;
+import io.kimo.lib.faker.api.PhoneAPI;
 import io.kimo.lib.faker.component.FakerTextComponent;
 import io.kimo.lib.faker.component.number.NumberComponent;
 
-public class PhoneComponent extends FakerTextComponent {
+public class PhoneComponent extends FakerTextComponent implements PhoneAPI {
 
     private String areaCodeMask, countryCodeMask;
     private NumberComponent numberComponent;
@@ -51,10 +52,12 @@ public class PhoneComponent extends FakerTextComponent {
         return phoneInMask.toString();
     }
 
+    @Override
     public String phoneWithAreaCode() {
         return numbersInMask(areaCodeMask, '#');
     }
 
+    @Override
     public String phoneWithCountryCode() {
         return numbersInMask(countryCodeMask, '#');
     }
