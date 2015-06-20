@@ -1,17 +1,27 @@
 package io.kimo.faker.mvp.view.ui.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.mikepenz.aboutlibraries.Libs;
+import com.mikepenz.aboutlibraries.LibsBuilder;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import io.kimo.faker.R;
@@ -47,6 +57,41 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_opensource);
+        menuItem.setIcon(new IconicsDrawable(this, FontAwesome.Icon.faw_github).actionBar().color(Color.WHITE));
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_opensource:
+
+                new LibsBuilder()
+                        .withFields(R.string.class.getFields())
+                        .withLicenseShown(true)
+                        .withAboutIconShown(true)
+                        .withAboutVersionShown(true)
+                        .withAboutDescription("This application exemplifies how Faker works in Android. The list below contains all open source libraries used in this example. <br /> <b>Check them out!</b>")
+                        .withActivityTitle("Open Source")
+                        .withActivityTheme(R.style.AppTheme)
+                        .withActivityStyle(Libs.ActivityStyle.LIGHT_DARK_TOOLBAR)
+                        .start(MainActivity.this);
+
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void configureToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -72,23 +117,36 @@ public class MainActivity extends AppCompatActivity {
                 .withToolbar(toolbar)
                 .withTranslucentStatusBar(true)
                 .addDrawerItems(
+                        new SectionDrawerItem().withName("Faker Components"),
                         new PrimaryDrawerItem()
                                 .withName("Lorem")
+                                .withIcon(GoogleMaterial.Icon.gmd_text_format)
+                                .withIconTintingEnabled(true)
                                 .withIdentifier(LOREM_FRAGMENT),
                         new PrimaryDrawerItem()
                                 .withName("Name")
+                                .withIcon(GoogleMaterial.Icon.gmd_person)
+                                .withIconTintingEnabled(true)
                                 .withIdentifier(NAME_FRAGMENT),
                         new PrimaryDrawerItem()
                                 .withName("Number")
+                                .withIcon(GoogleMaterial.Icon.gmd_filter_9_plus)
+                                .withIconTintingEnabled(true)
                                 .withIdentifier(NUMBER_FRAGMENT),
                         new PrimaryDrawerItem()
                                 .withName("Phone")
+                                .withIcon(GoogleMaterial.Icon.gmd_call)
+                                .withIconTintingEnabled(true)
                                 .withIdentifier(PHONE_FRAGMENT),
                         new PrimaryDrawerItem()
                                 .withName("Internet")
+                                .withIcon(GoogleMaterial.Icon.gmd_public)
+                                .withIconTintingEnabled(true)
                                 .withIdentifier(INTERNET_FRAGMENT),
                         new PrimaryDrawerItem()
                                 .withName("Url")
+                                .withIcon(GoogleMaterial.Icon.gmd_photo)
+                                .withIconTintingEnabled(true)
                                 .withIdentifier(URL_FRAGMENT)
 
                 )
@@ -102,7 +160,6 @@ public class MainActivity extends AppCompatActivity {
                         return false;
                     }
                 })
-                .withHeaderClickable(true)
                 .withSelectedItem(LOREM_FRAGMENT)
                 .withSavedInstance(savedInstanceState)
                 .build();
