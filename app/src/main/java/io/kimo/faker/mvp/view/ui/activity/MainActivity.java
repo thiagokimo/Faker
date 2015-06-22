@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         .withAboutIconShown(true)
                         .withAboutVersionShownName(true)
                         .withAboutAppName("Faker")
-                        .withAboutDescription("This application has some examples of how you should use Faker")
+                        .withAboutDescription("Provides fake data to your Android apps.")
                         .withActivityTitle("About")
                         .withActivityTheme(R.style.AppTheme)
                         .withActivityStyle(Libs.ActivityStyle.LIGHT_DARK_TOOLBAR)
