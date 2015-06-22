@@ -14,7 +14,7 @@ Gradle:
 
 ``` groovy
 dependencies {
-    compile 'com.github.thiagokimo:faker:1.0'
+    compile 'com.github.thiagokimo:faker:1.0.0'
 }
 ```
 
@@ -24,7 +24,7 @@ Maven:
 <dependency>
     <groupId>com.github.thiagokimo</groupId>
     <artifactId>faker</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
