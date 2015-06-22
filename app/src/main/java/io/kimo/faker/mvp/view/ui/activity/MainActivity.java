@@ -16,7 +16,6 @@ import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
-import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeaderBuilder;
@@ -30,6 +29,7 @@ import io.kimo.faker.mvp.view.ui.fragment.LoremFragment;
 import io.kimo.faker.mvp.view.ui.fragment.NameFragment;
 import io.kimo.faker.mvp.view.ui.fragment.NumberFragment;
 import io.kimo.faker.mvp.view.ui.fragment.PhoneFragment;
+import io.kimo.faker.mvp.view.ui.fragment.ProfileFragment;
 import io.kimo.faker.mvp.view.ui.fragment.UrlFragment;
 
 
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int PHONE_FRAGMENT = 3;
     public static final int INTERNET_FRAGMENT = 4;
     public static final int URL_FRAGMENT = 5;
+    public static final int SAMPLE_1_FRAGMENT = 6;
 
     private Toolbar toolbar;
     private Drawer drawer;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         configureDrawer(savedInstanceState);
 
         if(savedInstanceState == null) {
-            showFragment(LOREM_FRAGMENT);
+            showFragment(SAMPLE_1_FRAGMENT);
         }
     }
 
@@ -63,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
 
-        MenuItem menuItem = menu.findItem(R.id.action_opensource);
-        menuItem.setIcon(new IconicsDrawable(this, FontAwesome.Icon.faw_github).actionBar().color(Color.WHITE));
+        MenuItem menuItem = menu.findItem(R.id.action_about);
+        menuItem.setIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_help).actionBar().color(Color.WHITE));
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -73,19 +74,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.action_opensource:
+            case R.id.action_about:
 
                 new LibsBuilder()
                         .withFields(R.string.class.getFields())
-                        .withLicenseShown(true)
+                        .withAutoDetect(true)
                         .withAboutIconShown(true)
-                        .withAboutVersionShown(true)
-                        .withAboutDescription("This application exemplifies how Faker works in Android. The list below contains all open source libraries used in this example. <br /> <b>Check them out!</b>")
-                        .withActivityTitle("Open Source")
+                        .withAboutVersionShownName(true)
+                        .withAboutAppName("Faker")
+                        .withAboutDescription("This application has some examples of how you should use Faker")
+                        .withActivityTitle("About")
                         .withActivityTheme(R.style.AppTheme)
                         .withActivityStyle(Libs.ActivityStyle.LIGHT_DARK_TOOLBAR)
-                        .start(MainActivity.this);
-
+                        .start(this);
                 return true;
         }
 
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 .withToolbar(toolbar)
                 .withTranslucentStatusBar(true)
                 .addDrawerItems(
+                        new PrimaryDrawerItem().withName("Sample").withIdentifier(SAMPLE_1_FRAGMENT),
                         new SectionDrawerItem().withName("Faker Components"),
                         new PrimaryDrawerItem()
                                 .withName("Lorem")
@@ -153,14 +155,14 @@ public class MainActivity extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(AdapterView<?> adapterView, View view, int i, long l, IDrawerItem iDrawerItem) {
-                        if(iDrawerItem != null) {
+                        if (iDrawerItem != null) {
                             showFragment(iDrawerItem.getIdentifier());
                         }
 
                         return false;
                     }
                 })
-                .withSelectedItem(LOREM_FRAGMENT)
+                .withSelectedItem(0)
                 .withSavedInstance(savedInstanceState)
                 .build();
     }
@@ -193,6 +195,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case URL_FRAGMENT:
                 replace(UrlFragment.newInstance());
+                break;
+            case SAMPLE_1_FRAGMENT:
+                replace(new ProfileFragment());
+                break;
         }
     }
 
