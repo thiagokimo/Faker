@@ -24,6 +24,7 @@ import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import io.kimo.faker.R;
+import io.kimo.faker.mvp.view.ui.fragment.ColorFragment;
 import io.kimo.faker.mvp.view.ui.fragment.InternetFragment;
 import io.kimo.faker.mvp.view.ui.fragment.LoremFragment;
 import io.kimo.faker.mvp.view.ui.fragment.NameFragment;
@@ -31,6 +32,7 @@ import io.kimo.faker.mvp.view.ui.fragment.NumberFragment;
 import io.kimo.faker.mvp.view.ui.fragment.PhoneFragment;
 import io.kimo.faker.mvp.view.ui.fragment.ProfileFragment;
 import io.kimo.faker.mvp.view.ui.fragment.UrlFragment;
+import io.kimo.faker.mvp.view.ui.fragment.WidgetsFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
     public static final int PHONE_FRAGMENT = 3;
     public static final int INTERNET_FRAGMENT = 4;
     public static final int URL_FRAGMENT = 5;
-    public static final int SAMPLE_1_FRAGMENT = 6;
+    public static final int PROFILE_FRAGMENT = 6;
+    public static final int RANDOM_WIDGETS_FRAGMENT = 7;
+    public static final int COLOR_FRAGMENT = 8;
 
     private Toolbar toolbar;
     private Drawer drawer;
@@ -54,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
         configureDrawer(savedInstanceState);
 
         if(savedInstanceState == null) {
-            showFragment(SAMPLE_1_FRAGMENT);
+            showFragment(RANDOM_WIDGETS_FRAGMENT
+            );
         }
     }
 
@@ -65,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_main, menu);
 
         MenuItem menuItem = menu.findItem(R.id.action_about);
-        menuItem.setIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_help).actionBar().color(Color.WHITE));
+        menuItem.setIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_info_outline).actionBar().color(Color.WHITE));
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -118,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
                 .withToolbar(toolbar)
                 .withTranslucentStatusBar(true)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Sample").withIdentifier(SAMPLE_1_FRAGMENT),
+                        new PrimaryDrawerItem().withName("Random Widgets").withIdentifier(RANDOM_WIDGETS_FRAGMENT),
+                        new PrimaryDrawerItem().withName("Specific ").withIdentifier(PROFILE_FRAGMENT),
                         new SectionDrawerItem().withName("Faker Components"),
                         new PrimaryDrawerItem()
                                 .withName("Lorem")
@@ -149,7 +155,12 @@ public class MainActivity extends AppCompatActivity {
                                 .withName("Url")
                                 .withIcon(GoogleMaterial.Icon.gmd_photo)
                                 .withIconTintingEnabled(true)
-                                .withIdentifier(URL_FRAGMENT)
+                                .withIdentifier(URL_FRAGMENT),
+                        new PrimaryDrawerItem()
+                                .withName("Color")
+                                .withIcon(GoogleMaterial.Icon.gmd_invert_colors)
+                                .withIconTintingEnabled(true)
+                                .withIdentifier(COLOR_FRAGMENT)
 
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -196,8 +207,14 @@ public class MainActivity extends AppCompatActivity {
             case URL_FRAGMENT:
                 replace(UrlFragment.newInstance());
                 break;
-            case SAMPLE_1_FRAGMENT:
+            case PROFILE_FRAGMENT:
                 replace(new ProfileFragment());
+                break;
+            case RANDOM_WIDGETS_FRAGMENT:
+                replace(new WidgetsFragment());
+                break;
+            case COLOR_FRAGMENT:
+                replace(ColorFragment.newInstance());
                 break;
         }
     }
