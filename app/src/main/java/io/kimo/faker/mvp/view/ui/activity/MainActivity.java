@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ScrollView;
 
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private Drawer drawer;
+    private ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +60,7 @@ public class MainActivity extends AppCompatActivity {
         configureDrawer(savedInstanceState);
 
         if(savedInstanceState == null) {
-            showFragment(RANDOM_WIDGETS_FRAGMENT
-            );
+            showFragment(RANDOM_WIDGETS_FRAGMENT);
         }
     }
 
@@ -123,9 +124,9 @@ public class MainActivity extends AppCompatActivity {
                 .withToolbar(toolbar)
                 .withTranslucentStatusBar(true)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Random Widgets").withIdentifier(RANDOM_WIDGETS_FRAGMENT),
-                        new PrimaryDrawerItem().withName("Specific ").withIdentifier(PROFILE_FRAGMENT),
-                        new SectionDrawerItem().withName("Faker Components"),
+                        new PrimaryDrawerItem().withName("Random data").withIdentifier(RANDOM_WIDGETS_FRAGMENT),
+                        new PrimaryDrawerItem().withName("\"Specific\" random data").withIdentifier(PROFILE_FRAGMENT),
+                        new SectionDrawerItem().withName("FAKER  COMPONENTS"),
                         new PrimaryDrawerItem()
                                 .withName("Lorem")
                                 .withIcon(GoogleMaterial.Icon.gmd_text_format)
@@ -220,6 +221,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void replace(Fragment fragment) {
+
+        if(scrollView == null) {
+            scrollView = (ScrollView) findViewById(R.id.container);
+        }
+
+        scrollView.fullScroll(ScrollView.FOCUS_UP);
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();

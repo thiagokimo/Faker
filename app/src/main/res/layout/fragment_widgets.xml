@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/activity_horizontal_margin">
 
@@ -13,29 +15,25 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView" />
+            tools:text="New Text" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView2" />
+            tools:text="Large Text" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView3" />
+            tools:text="Medium Text" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
-            android:id="@+id/textView4" />
+            tools:text="Small Text" />
     </LinearLayout>
 
     <LinearLayout
@@ -47,20 +45,17 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button" />
+            tools:text="New Button" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New RadioButton"
-            android:id="@+id/radioButton" />
+            tools:text="New RadioButton"/>
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox" />
+            tools:text="New CheckBox"/>
 
         <Switch
             android:layout_width="wrap_content"
@@ -71,8 +66,7 @@
         <ToggleButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New ToggleButton"
-            android:id="@+id/toggleButton" />
+            tools:text="New ToggleButton" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,48 +74,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton" />
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar" />
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar2" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar3" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar4" />
+            android:layout_height="40dp"/>
 
         <SeekBar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/seekBar" />
+            android:layout_height="wrap_content"/>
 
         <RatingBar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratingBar" />
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </LinearLayout>

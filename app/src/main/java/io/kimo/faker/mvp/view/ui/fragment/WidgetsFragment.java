@@ -12,12 +12,21 @@ import io.kimo.lib.faker.Faker;
 
 public class WidgetsFragment extends Fragment {
 
+    private View rootView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_widgets, container, false);
-        getActivity().setTitle("Full Random Data");
-        Faker.with(getActivity()).fill(view);
-        return view;
+        rootView = inflater.inflate(R.layout.fragment_widgets, container, false);
+        return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        getActivity().setTitle("Random Data");
+
+        Faker.with(getActivity()).fill(rootView);
     }
 }

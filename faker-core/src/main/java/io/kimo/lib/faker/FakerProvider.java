@@ -1,10 +1,18 @@
 package io.kimo.lib.faker;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Checkable;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import java.util.Random;
 
 import io.kimo.lib.faker.component.FakerColorComponent;
 import io.kimo.lib.faker.component.FakerNumericComponent;
@@ -38,7 +46,7 @@ public class FakerProvider {
     }
 
     /**
-     * Fill view with random data
+     * Fill a view with random data
      * @param view target view
      */
     public void fill(View view) {
@@ -51,10 +59,26 @@ public class FakerProvider {
                     View child = viewGroup.getChildAt(i);
                     fill(child);
                 }
-            } else if(view instanceof TextView) {
-                fillWithText((TextView)view, Lorem);
-            } else if(view instanceof ImageView) {
-                fillWithColor((ImageView)view, Color);
+            } else {
+                if(view instanceof TextView) {
+                    if(view instanceof ToggleButton) {
+                        fillOnAndOffWithText((ToggleButton) view, Lorem);
+                    } else {
+                        fillWithText((TextView) view, Lorem);
+                    }
+                }
+
+                if(view instanceof CompoundButton) {
+                    fillWithCheckState((CompoundButton) view);
+                }
+
+                if(view instanceof ImageView) {
+                    fillWithColor(view, Color);
+                }
+
+                if(view instanceof ProgressBar) {
+                    fillWithProgress((ProgressBar) view, Number);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,12 +111,61 @@ public class FakerProvider {
         view.setText(String.valueOf(component.randomNumber()));
     }
 
-    public void fillWithColor(ImageView view, FakerColorComponent component) {
+    /**
+     * Fill view with a random color
+     * @param view
+     * @param component
+     */
+    public void fillWithColor(View view, FakerColorComponent component) {
         validateNotNullableView(view);
-        validateIfIsATextView(view);
         validateNotNullableFakerComponent(component);
 
         view.setBackgroundColor(component.randomColor());
+    }
+
+    /**
+     * Set a random check or uncheck state
+     * @param view
+     */
+    public void fillWithCheckState(CompoundButton view) {
+        validateNotNullableView(view);
+        validateIfIsACompoundButton(view);
+
+        view.setChecked(new Random().nextBoolean());
+    }
+
+    /**
+     * Fill {@link ToggleButton} on and off text
+     * @param view
+     * @param component
+     */
+    public void fillOnAndOffWithText(ToggleButton view, FakerTextComponent component) {
+        validateNotNullableView(view);
+        validateIfIsAToggleButton(view);
+        validateNotNullableFakerComponent(component);
+
+        String word = component.randomText();
+
+        view.setTextOff(word);
+        view.setTextOn(word);
+    }
+
+    /**
+     * Fill a @{link ProgressBar} with a random progress
+     * @param view
+     * @param component
+     */
+    public void fillWithProgress(ProgressBar view, FakerNumericComponent component) {
+        validateNotNullableView(view);
+        validateIfIsAProgressBar(view);
+        validateNotNullableFakerComponent(component);
+
+        view.setProgress(Math.abs(component.randomNumber().intValue()));
+    }
+
+    private void validateIfIsACompoundButton(View view) {
+        if(!(view instanceof CompoundButton))
+            throw new IllegalArgumentException("View must be a CompoundButton");
     }
 
     private void validateIfIsATextView(View view) {
@@ -109,6 +182,18 @@ public class FakerProvider {
     private void validateNotNullableFakerComponent(FakerCoreComponent component) {
         if(component == null) {
             throw new IllegalArgumentException("FakerComponent must not be null");
+        }
+    }
+
+    private void validateIfIsAToggleButton(View view) {
+        if(!(view instanceof ToggleButton)) {
+            throw new IllegalArgumentException("View must be a ToggleButton");
+        }
+    }
+
+    private void validateIfIsAProgressBar(View view) {
+        if(!(view instanceof ProgressBar)) {
+            throw new IllegalArgumentException("View must be a ProgressBar");
         }
     }
 }

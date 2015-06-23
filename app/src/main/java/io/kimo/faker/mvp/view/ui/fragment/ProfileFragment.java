@@ -52,6 +52,7 @@ public class ProfileFragment extends Fragment {
         email.setText(fakerProvider.Internet.email());
         phone.setText(fakerProvider.Phone.phoneWithAreaCode());
 
-        getActivity().setTitle(name.getText());
+        getActivity().setTitle("\"Specific\" Random Data");
+
     }
 }
