@@ -5,7 +5,6 @@ Faker, as the name says, provides fake data to your Android apps. Now it's very 
 
 ![](https://raw.githubusercontent.com/thiagokimo/Faker/master/screenshots/random-data.png)
 ![](https://raw.githubusercontent.com/thiagokimo/Faker/master/screenshots/profile-sample-screenshot.png)
-![]()
 
 
 ##Demo
