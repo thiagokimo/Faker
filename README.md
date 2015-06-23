@@ -56,7 +56,7 @@ Faker.with(context)
       .componentMethod();
 ```
 
-Check out all examples [here](http://qisdjzkxi.com).
+Check out all examples [here](https://github.com/thiagokimo/Faker/tree/master/app/src/main/java/io/kimo/faker/mvp/presenter).
 
 ##Components
 
@@ -68,7 +68,7 @@ Faker is organized in components that provides you specific types of data. Here 
 * [Phone]() - Phone masks \o/
 * [Internet]() - It provides you random emails and domains.
 * [Url]() - Gives you (valid) urls that you might use somewhere.
-* [Color]() - Thanks to [lzyzsd](https://github.com/lzyzsd/AndroidRandomColor)!
+* [Color]() - Generates attractive colors thanks to [lzyzsd](https://github.com/lzyzsd/AndroidRandomColor)!
 
 ##Contribuiting
 
