@@ -76,7 +76,7 @@ Faker is organized in components that provides you specific types of data. Here 
 2. Create your feature/bug-fix branch(`git checkout -b my-new-feature-or-fix`)
 3. Commit your changes (`git commit -am 'Add some feature/fix'`)
 4. Do your pull-request
-5. 
+
 Make sure you write tests for your code. Only code with passing tests will be accepted.
 
 ###Components
