@@ -45,10 +45,9 @@ Faker.with(context)
       .fill(rootView);
 ```
 
-Faker will figure out views are inside your passing view and fill it with data.
-Just like that!
+Faker will figure out all views inside the one you passed to it and fill it with proper data. Just like that!
 
-By default faker will fill TextViews with lorem ipsum, ImageViews with a random color, CompoundButtons with a random state (check or uncheck) and ProgressBars with a random progress value.
+By default faker will fill **TextViews** with lorem ipsum, **ImageViews** with a random color, **CompoundButtons** with a random state (check or uncheck) and **ProgressBars** with a random progress value.
 
 ###The specific way
 
