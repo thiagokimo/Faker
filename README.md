@@ -1,7 +1,7 @@
 # Faker
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Faker-green.svg?style=flat)](https://android-arsenal.com/details/1/2039)
 
-Faker provides fake data to your Android apps. Now it's very handy to make screenshots of your apps without worrying with Google Play copyright infringments. Faker helps you to populate your views with random data quickly and painlessly.
+Faker provides fake data to your Android apps. Now it's very handy to make screenshots of your apps without worrying with Google Play copyright infringments, e.g [this app](https://play.google.com/store/apps/details?id=io.kimo.tmdb). Faker helps you to populate your views with random data quickly and painlessly.
 
 ##Screenshots
 
