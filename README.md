@@ -63,13 +63,14 @@ Check out all examples [here](https://github.com/thiagokimo/Faker/tree/master/ap
 
 Faker is organized in components that provides you specific types of data. Here is a list of the current components:
 
-* [Lorem]() - The old good lorem ispum words, sentences and paragraphs.
-* [Name]() - Firsts, lasts, full and complete names and profession/titles.
-* [Number]() - It gives you numbers ¬¬
-* [Phone]() - Phone masks \o/
-* [Internet]() - It provides you random emails and domains.
-* [Url]() - Gives you (valid) urls that you might use somewhere.
-* [Color]() - Generates attractive colors thanks to [lzyzsd](https://github.com/lzyzsd/AndroidRandomColor)!
+* [Lorem](https://github.com/thiagokimo/Faker/blob/master/faker-core/src/main/java/io/kimo/lib/faker/component/text/LoremComponent.java) - The old good lorem ispum words, sentences and paragraphs.
+* [Name](https://github.com/thiagokimo/Faker/blob/master/faker-core/src/main/java/io/kimo/lib/faker/component/text/NameComponent.java) - Firsts, lasts, full and complete names and profession/titles.
+* [Number](https://github.com/thiagokimo/Faker/blob/master/faker-core/src/main/java/io/kimo/lib/faker/component/number/NumberComponent.java) - It gives you numbers ¬¬
+* [Phone](https://github.com/thiagokimo/Faker/blob/master/faker-core/src/main/java/io/kimo/lib/faker/component/text/PhoneComponent.java) - Phone masks \o/
+* [Internet](https://github.com/thiagokimo/Faker/blob/master/faker-core/src/main/java/io/kimo/lib/faker/component/text/InternetComponent.java) - It provides you random emails and domains.
+* [Url](https://github.com/thiagokimo/Faker/blob/master/faker-core/src/main/java/io/kimo/lib/faker/component/text/URLComponent.java) - Gives you (valid) urls that you might use somewhere.
+* [Color](https://github.com/thiagokimo/Faker/blob/master/faker-core/src/main/java/io/kimo/lib/faker/component/number/ColorComponent.java) - Generates attractive colors thanks to [lzyzsd](https://github.com/lzyzsd/AndroidRandomColor)!
+* [Address](https://github.com/thiagokimo/Faker/blob/master/faker-core/src/main/java/io/kimo/lib/faker/component/text/AddressComponent.java) - Gives random cities, countries, zipcodes, states and so on.
 
 ##Contribuiting
 
