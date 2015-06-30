@@ -25,6 +25,7 @@ import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import io.kimo.faker.R;
+import io.kimo.faker.mvp.view.ui.fragment.AddressFragment;
 import io.kimo.faker.mvp.view.ui.fragment.ColorFragment;
 import io.kimo.faker.mvp.view.ui.fragment.InternetFragment;
 import io.kimo.faker.mvp.view.ui.fragment.LoremFragment;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int PROFILE_FRAGMENT = 6;
     public static final int RANDOM_WIDGETS_FRAGMENT = 7;
     public static final int COLOR_FRAGMENT = 8;
+    public static final int ADDRESS_FRAGMENT = 9;
 
     private Toolbar toolbar;
     private Drawer drawer;
@@ -161,7 +163,12 @@ public class MainActivity extends AppCompatActivity {
                                 .withName("Color")
                                 .withIcon(GoogleMaterial.Icon.gmd_invert_colors)
                                 .withIconTintingEnabled(true)
-                                .withIdentifier(COLOR_FRAGMENT)
+                                .withIdentifier(COLOR_FRAGMENT),
+                        new PrimaryDrawerItem()
+                                .withName("Address")
+                                .withIcon(GoogleMaterial.Icon.gmd_home)
+                                .withIconTintingEnabled(true)
+                                .withIdentifier(ADDRESS_FRAGMENT)
 
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -216,6 +223,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case COLOR_FRAGMENT:
                 replace(ColorFragment.newInstance());
+                break;
+            case ADDRESS_FRAGMENT:
+                replace(AddressFragment.newInstance());
                 break;
         }
     }

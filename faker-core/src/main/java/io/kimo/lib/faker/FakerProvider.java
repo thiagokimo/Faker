@@ -19,6 +19,7 @@ import io.kimo.lib.faker.component.FakerNumericComponent;
 import io.kimo.lib.faker.component.FakerTextComponent;
 import io.kimo.lib.faker.component.number.ColorComponent;
 import io.kimo.lib.faker.component.number.NumberComponent;
+import io.kimo.lib.faker.component.text.AddressComponent;
 import io.kimo.lib.faker.component.text.InternetComponent;
 import io.kimo.lib.faker.component.text.LoremComponent;
 import io.kimo.lib.faker.component.text.NameComponent;
@@ -34,6 +35,7 @@ public class FakerProvider {
     public static InternetComponent Internet;
     public static UrlComponent Url;
     public static ColorComponent Color;
+    public static AddressComponent Address;
 
     public FakerProvider(Context context) {
         Lorem = new LoremComponent(context);
@@ -43,6 +45,7 @@ public class FakerProvider {
         Internet = new InternetComponent(context);
         Url = new UrlComponent(context);
         Color = new ColorComponent(context);
+        Address = new AddressComponent(context);
     }
 
     /**
