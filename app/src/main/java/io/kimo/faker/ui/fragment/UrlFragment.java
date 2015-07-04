@@ -1,4 +1,4 @@
-package io.kimo.faker.mvp.view.ui.fragment;
+package io.kimo.faker.ui.fragment;
 
 import android.view.View;
 import android.widget.ImageView;

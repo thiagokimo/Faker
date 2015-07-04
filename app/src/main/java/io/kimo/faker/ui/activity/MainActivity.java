@@ -1,4 +1,4 @@
-package io.kimo.faker.mvp.view.ui.activity;
+package io.kimo.faker.ui.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,22 +19,21 @@ import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.accountswitcher.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import io.kimo.faker.R;
-import io.kimo.faker.mvp.view.ui.fragment.AddressFragment;
-import io.kimo.faker.mvp.view.ui.fragment.ColorFragment;
-import io.kimo.faker.mvp.view.ui.fragment.InternetFragment;
-import io.kimo.faker.mvp.view.ui.fragment.LoremFragment;
-import io.kimo.faker.mvp.view.ui.fragment.NameFragment;
-import io.kimo.faker.mvp.view.ui.fragment.NumberFragment;
-import io.kimo.faker.mvp.view.ui.fragment.PhoneFragment;
-import io.kimo.faker.mvp.view.ui.fragment.ProfileFragment;
-import io.kimo.faker.mvp.view.ui.fragment.UrlFragment;
-import io.kimo.faker.mvp.view.ui.fragment.WidgetsFragment;
+import io.kimo.faker.ui.fragment.AddressFragment;
+import io.kimo.faker.ui.fragment.ColorFragment;
+import io.kimo.faker.ui.fragment.InternetFragment;
+import io.kimo.faker.ui.fragment.LoremFragment;
+import io.kimo.faker.ui.fragment.NameFragment;
+import io.kimo.faker.ui.fragment.NumberFragment;
+import io.kimo.faker.ui.fragment.PhoneFragment;
+import io.kimo.faker.ui.fragment.ProfileFragment;
+import io.kimo.faker.ui.fragment.UrlFragment;
+import io.kimo.faker.ui.fragment.WidgetsFragment;
 
 
 public class MainActivity extends AppCompatActivity {

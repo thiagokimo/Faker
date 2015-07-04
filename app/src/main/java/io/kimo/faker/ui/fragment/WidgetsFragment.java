@@ -1,4 +1,4 @@
-package io.kimo.faker.mvp.view.ui.fragment;
+package io.kimo.faker.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

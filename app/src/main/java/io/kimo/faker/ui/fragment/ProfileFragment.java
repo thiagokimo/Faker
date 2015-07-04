@@ -1,4 +1,4 @@
-package io.kimo.faker.mvp.view.ui.fragment;
+package io.kimo.faker.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso;
 
 import io.kimo.faker.R;
 import io.kimo.lib.faker.Faker;
-import io.kimo.lib.faker.FakerProvider;
 
 public class ProfileFragment extends Fragment {
 
@@ -39,18 +38,16 @@ public class ProfileFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        FakerProvider fakerProvider = Faker.with(getActivity());
-
         Picasso.with(getActivity())
-                .load(fakerProvider.Url.avatar())
+                .load(Faker.with(getActivity()).Url.avatar())
                 .placeholder(R.drawable.drawer_background)
                 .error(R.drawable.drawer_background)
                 .into(image);
-        name.setText(fakerProvider.Name.fullName());
-        title.setText(fakerProvider.Name.title());
-        website.setText(fakerProvider.Internet.url());
-        email.setText(fakerProvider.Internet.email());
-        phone.setText(fakerProvider.Phone.phoneWithAreaCode());
+        name.setText(Faker.with(getActivity()).Name.fullName());
+        title.setText(Faker.with(getActivity()).Name.title());
+        website.setText(Faker.with(getActivity()).Internet.url());
+        email.setText(Faker.with(getActivity()).Internet.email());
+        phone.setText(Faker.with(getActivity()).Phone.phoneWithAreaCode());
 
         getActivity().setTitle("\"Specific\" Random Data");
 
