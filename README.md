@@ -22,7 +22,7 @@ Gradle:
 
 ``` groovy
 dependencies {
-    compile 'com.github.thiagokimo:faker:1.3.0'
+    compile 'com.github.thiagokimo:faker:1.3.1'
 }
 ```
 
@@ -32,7 +32,7 @@ Maven:
 <dependency>
     <groupId>com.github.thiagokimo</groupId>
     <artifactId>faker</artifactId>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
 </dependency>
 ```
 
