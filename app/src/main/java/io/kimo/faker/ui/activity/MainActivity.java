@@ -32,6 +32,7 @@ import io.kimo.faker.ui.fragment.NameFragment;
 import io.kimo.faker.ui.fragment.NumberFragment;
 import io.kimo.faker.ui.fragment.PhoneFragment;
 import io.kimo.faker.ui.fragment.ProfileFragment;
+import io.kimo.faker.ui.fragment.TargetViewsFragment;
 import io.kimo.faker.ui.fragment.UrlFragment;
 import io.kimo.faker.ui.fragment.WidgetsFragment;
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int RANDOM_WIDGETS_FRAGMENT = 7;
     public static final int COLOR_FRAGMENT = 8;
     public static final int ADDRESS_FRAGMENT = 9;
+    public static final int TARGET_VIEWS_FRAGMENT = 10;
 
     private Toolbar toolbar;
     private Drawer drawer;
@@ -120,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 .withTranslucentStatusBar(true)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Random data").withIdentifier(RANDOM_WIDGETS_FRAGMENT),
+                        new PrimaryDrawerItem().withName("Target views").withIdentifier(TARGET_VIEWS_FRAGMENT),
                         new PrimaryDrawerItem().withName("\"Specific\" random data").withIdentifier(PROFILE_FRAGMENT),
                         new SectionDrawerItem().withName("FAKER  COMPONENTS"),
                         new PrimaryDrawerItem()
@@ -219,6 +222,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case ADDRESS_FRAGMENT:
                 replace(AddressFragment.newInstance());
+                break;
+            case TARGET_VIEWS_FRAGMENT:
+                replace(new TargetViewsFragment());
                 break;
         }
     }

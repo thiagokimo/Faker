@@ -9,6 +9,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Random;
 
 import io.kimo.lib.faker.component.FakerColorComponent;
@@ -35,6 +37,8 @@ public class Faker {
     public static UrlComponent Url;
     public static ColorComponent Color;
     public static AddressComponent Address;
+
+    private HashSet<Integer> mIds = null;
 
     public static Faker with(Context context) {
         if(mFaker == null) {
@@ -78,24 +82,10 @@ public class Faker {
                     fill(child);
                 }
             } else {
-                if(view instanceof TextView) {
-                    if(view instanceof ToggleButton) {
-                        fillOnAndOffWithText((ToggleButton) view, Lorem);
-                    } else {
-                        fillWithText((TextView) view, Lorem);
-                    }
-                }
-
-                if(view instanceof CompoundButton) {
-                    fillWithCheckState((CompoundButton) view);
-                }
-
-                if(view instanceof ImageView) {
-                    fillWithColor(view, Color);
-                }
-
-                if(view instanceof ProgressBar) {
-                    fillWithProgress((ProgressBar) view, Number);
+                if(mIds == null) {
+                    fillView(view);
+                } else if(mIds.contains(view.getId())) {
+                    fillView(view);
                 }
             }
         } catch (Exception e) {
@@ -114,6 +104,15 @@ public class Faker {
         validateNotNullableFakerComponent(component);
 
         view.setText(component.randomText());
+    }
+
+    /**
+     * Specify with views are going to be filled with data.
+     * @param ids - collection of ids
+     */
+    public Faker targetViews(Integer...ids) {
+        mIds = new HashSet<>(Arrays.asList(ids));
+        return this;
     }
 
     /**
@@ -179,6 +178,28 @@ public class Faker {
         validateNotNullableFakerComponent(component);
 
         view.setProgress(Math.abs(component.randomNumber().intValue()));
+    }
+
+    private void fillView(View view) {
+        if(view instanceof TextView) {
+            if(view instanceof ToggleButton) {
+                fillOnAndOffWithText((ToggleButton) view, Lorem);
+            } else {
+                fillWithText((TextView) view, Lorem);
+            }
+        }
+
+        if(view instanceof CompoundButton) {
+            fillWithCheckState((CompoundButton) view);
+        }
+
+        if(view instanceof ImageView) {
+            fillWithColor(view, Color);
+        }
+
+        if(view instanceof ProgressBar) {
+            fillWithProgress((ProgressBar) view, Number);
+        }
     }
 
     private void validateIfIsACompoundButton(View view) {
