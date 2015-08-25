@@ -90,6 +90,8 @@ public class Faker {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            mFaker = null;
         }
     }
 
