@@ -23,7 +23,7 @@ import io.kimo.lib.faker.component.text.InternetComponent;
 import io.kimo.lib.faker.component.text.LoremComponent;
 import io.kimo.lib.faker.component.text.NameComponent;
 import io.kimo.lib.faker.component.text.PhoneComponent;
-import io.kimo.lib.faker.component.text.UrlComponent;
+import io.kimo.lib.faker.component.text.URLComponent;
 
 public class Faker {
 
@@ -34,7 +34,7 @@ public class Faker {
     public static NumberComponent Number;
     public static PhoneComponent Phone;
     public static InternetComponent Internet;
-    public static UrlComponent Url;
+    public static URLComponent Url;
     public static ColorComponent Color;
     public static AddressComponent Address;
 
@@ -62,7 +62,7 @@ public class Faker {
         Number = new NumberComponent(context);
         Phone = new PhoneComponent(context);
         Internet = new InternetComponent(context);
-        Url = new UrlComponent(context);
+        Url = new URLComponent(context);
         Color = new ColorComponent(context);
         Address = new AddressComponent(context);
     }
