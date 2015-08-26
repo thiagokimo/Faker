@@ -76,7 +76,7 @@ public class NumberComponent extends FakerNumericComponent implements NumberAPI 
         StringBuilder randomNumbers = new StringBuilder();
 
         for(int i = 0; i < amountOfDigits; i++) {
-            randomNumbers.append(positiveDigit());
+            randomNumbers.append(randomNumberInRangePositiveOrNegative(1,9));
         }
 
         return Math.abs(Integer.parseInt(randomNumbers.toString()));

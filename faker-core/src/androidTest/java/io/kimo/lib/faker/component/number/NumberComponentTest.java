@@ -52,8 +52,10 @@ public class NumberComponentTest extends AndroidTestCase {
 
     @Test
     public void testNumbersWithArguments() throws Exception {
-        String randomNumber = numberComponent.number(3) + "";
-        assertTrue(randomNumber.length() == 3);
+        for(int i = 0; i < 10000; i++) {
+            String randomNumber = numberComponent.number(3) + "";
+            assertTrue(randomNumber.length() == 3);
+        }
     }
 
     @Test
