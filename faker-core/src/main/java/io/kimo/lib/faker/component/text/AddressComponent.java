@@ -56,9 +56,15 @@ public class AddressComponent extends FakerTextComponent implements AddressAPI {
         Random random = new Random();
         StringBuilder cityName = new StringBuilder();
 
-        boolean withPrefix = random.nextBoolean();
-        boolean withSuffix = random.nextBoolean();
         boolean withFirstName = random.nextBoolean();
+        boolean withPrefix = random.nextBoolean();
+        boolean withSuffix;
+
+        if(withPrefix) {
+            withSuffix = random.nextBoolean();
+        } else {
+            withSuffix = true;
+        }
 
         if(withPrefix) {
             cityName.append(cityPrefix());

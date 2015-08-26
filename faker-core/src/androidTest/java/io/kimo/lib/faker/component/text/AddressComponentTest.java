@@ -35,24 +35,42 @@ public class AddressComponentTest extends AndroidTestCase {
     @Test
     public void testCity() throws Exception {
 
-        String city = addressComponent.city();
+        for(int i = 0; i < 1000; i++) {
+            String city = addressComponent.city();
 
-        boolean containsFirstName = false;
-        boolean containsLastName = false;
+            boolean containsFirstName = false;
+            boolean containsLastName = false;
 
-        for (String firstName : firstNames) {
-            if (city.contains(firstName)) {
-                containsFirstName = true;
+            boolean containsPrefix = false;
+            boolean containsSuffix = false;
+
+            for (String firstName : firstNames) {
+                if (city.contains(firstName)) {
+                    containsFirstName = true;
+                }
             }
-        }
 
-        for (String lastName : lastNames) {
-            if (city.contains(lastName)) {
-                containsLastName = true;
+            for (String lastName : lastNames) {
+                if (city.contains(lastName)) {
+                    containsLastName = true;
+                }
             }
-        }
 
-        assertTrue(containsFirstName || containsLastName);
+            for (String prefix : cityPrefixes) {
+                if (city.contains(prefix)) {
+                    containsPrefix = true;
+                }
+            }
+
+            for (String suffix : citySuffixes) {
+                if (city.contains(suffix)) {
+                    containsSuffix = true;
+                }
+            }
+
+            assertTrue(containsFirstName || containsLastName);
+            assertTrue(containsPrefix || containsSuffix);
+        }
     }
 
     @Test
