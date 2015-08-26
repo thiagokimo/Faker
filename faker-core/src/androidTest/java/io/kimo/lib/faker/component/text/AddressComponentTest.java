@@ -10,8 +10,6 @@ import java.util.List;
 
 import io.kimo.lib.faker.R;
 
-import static org.junit.Assert.*;
-
 public class AddressComponentTest extends AndroidTestCase {
 
     private AddressComponent addressComponent;
@@ -42,34 +40,19 @@ public class AddressComponentTest extends AndroidTestCase {
         boolean containsFirstName = false;
         boolean containsLastName = false;
 
-        boolean containsCityPrefix = false;
-        boolean containsCitySuffix = false;
-
-        for(String firstName : firstNames) {
-            if(city.contains(firstName)) {
+        for (String firstName : firstNames) {
+            if (city.contains(firstName)) {
                 containsFirstName = true;
             }
         }
 
-        for(String lastName : lastNames) {
-            if(city.contains(lastName)) {
+        for (String lastName : lastNames) {
+            if (city.contains(lastName)) {
                 containsLastName = true;
             }
         }
 
-        for(String cityPrefix : cityPrefixes) {
-            if(city.contains(cityPrefix)) {
-                containsCityPrefix = true;
-            }
-        }
-
-        for(String citySuffix : citySuffixes) {
-            if(city.contains(citySuffix)) {
-                containsCitySuffix = true;
-            }
-        }
         assertTrue(containsFirstName || containsLastName);
-        assertTrue(containsCityPrefix || containsCitySuffix);
     }
 
     @Test

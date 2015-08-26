@@ -62,18 +62,18 @@ public class AddressComponent extends FakerTextComponent implements AddressAPI {
 
         if(withPrefix) {
             cityName.append(cityPrefix());
-            cityName.append(" ");
         }
+
+        cityName.append(" ");
 
         if(withFirstName) {
             cityName.append(nameComponent.firstName());
-            cityName.append(" ");
         } else {
             cityName.append(nameComponent.lastName());
-            cityName.append(" ");
         }
 
         if(withSuffix) {
+            cityName.append(" ");
             cityName.append(citySuffix());
         }
 
