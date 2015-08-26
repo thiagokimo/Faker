@@ -58,6 +58,16 @@ Faker.with(context)
       .componentMethod();
 ```
 
+###Targeting views
+
+If you want Faker to fill specific views inside your ViewGroup you can pass your target views like the example below
+
+``` java
+Faker.with(context)
+      .targetViews(collection-of-ids)
+      .fill(rootView);
+```
+
 Check out all examples [here](https://github.com/thiagokimo/Faker/tree/master/app/src/main/java/io/kimo/faker/mvp/presenter).
 
 ##Components
