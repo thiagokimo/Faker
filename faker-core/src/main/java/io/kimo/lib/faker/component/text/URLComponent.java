@@ -5,7 +5,7 @@ import android.content.Context;
 import io.kimo.lib.faker.api.UrlAPI;
 import io.kimo.lib.faker.component.FakerTextComponent;
 
-public class UrlComponent extends FakerTextComponent implements UrlAPI {
+public class URLComponent extends FakerTextComponent implements UrlAPI {
 
     private static final String BASE_IMAGE_URL = "http://lorempixel.com/";
     private static final String BASE_AVATAR_URL = "https://robohash.org/";
@@ -13,7 +13,7 @@ public class UrlComponent extends FakerTextComponent implements UrlAPI {
 
     private NameComponent nameComponent;
 
-    public UrlComponent(Context context) {
+    public URLComponent(Context context) {
         super(context);
         nameComponent = new NameComponent(context);
     }

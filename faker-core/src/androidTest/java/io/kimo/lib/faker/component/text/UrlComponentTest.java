@@ -9,14 +9,14 @@ import io.kimo.lib.faker.component.number.NumberComponent;
 
 public class UrlComponentTest extends AndroidTestCase {
 
-    private UrlComponent url;
+    private URLComponent url;
     private NumberComponent numberComponent;
     private String imageRegex = "http:\\/\\/lorempixel.com\\/\\d+\\/\\d+";
     private String avatarRegex = "https:\\/\\/robohash.org\\/.+";
 
     @Before
     public void setUp() throws Exception {
-        url = new UrlComponent(getContext());
+        url = new URLComponent(getContext());
         numberComponent = new NumberComponent(getContext());
     }
 
