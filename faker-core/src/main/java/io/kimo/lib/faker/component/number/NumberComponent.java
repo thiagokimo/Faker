@@ -9,6 +9,8 @@ import io.kimo.lib.faker.component.FakerNumericComponent;
 
 public class NumberComponent extends FakerNumericComponent implements NumberAPI {
 
+    private Random mRandom = new Random();
+
     public NumberComponent(Context context) {
         super(context);
     }
@@ -19,24 +21,33 @@ public class NumberComponent extends FakerNumericComponent implements NumberAPI 
 
         switch (method % 6) {
             case 0:
-                return new Integer(digit());
+                return digit();
             case 1:
-                return new Integer(positiveDigit());
+                return positiveDigit();
             case 2:
-                return new Integer(negativeDigit());
+                return negativeDigit();
             case 3:
-                return new Integer(number());
+                return number();
             case 4:
-                return new Integer(positiveNumber());
+                return positiveNumber();
             case 5:
-                return new Integer(negativeNumber());
+                return negativeNumber();
             default:
-                return new Integer(0);
+                return 0;
         }
     }
 
     private int randomNumberInRangePositiveOrNegative(int min, int max) {
-        return new Random().nextInt((max - min) + 1) + min;
+        return mRandom.nextInt((max - min) + 1) + min;
+    }
+
+    @Override
+    public void setSeed(Random random) {
+        mRandom = random;
+    }
+
+    public Random getSeed() {
+        return mRandom;
     }
 
     @Override
@@ -57,7 +68,7 @@ public class NumberComponent extends FakerNumericComponent implements NumberAPI 
     @Override
     public int number() {
 
-        int randomSignal = (int) Math.random() * 10;
+        int randomSignal = (int) (Math.random() * 10);
 
         if(randomSignal % 2 == 0) {
             return number(randomNumberInRangePositiveOrNegative(1, 9));
