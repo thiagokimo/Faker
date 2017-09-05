@@ -21,19 +21,40 @@ The demo app has a very clean MVP architecture based in the idea of [this post](
 
 Gradle:
 
+Add the JitPack repository to your build file:
+
+``` groovy
+repositories {
+    maven {
+	    url "https://jitpack.io"
+	}
+}
+```
+
+Add the dependency in the form:
+
 ``` groovy
 dependencies {
-    compile 'com.github.thiagokimo:faker:1.4.3'
+    compile 'com.github.thiagokimo:faker:VERSION'
 }
 ```
 
 Maven:
 
+If you use Maven, add this into your build file:
+
+``` xml
+<repository>
+    <id>jitpack.io</id>
+	<url>https://jitpack.io</url>
+</repository>
+```
+
 ``` xml
 <dependency>
     <groupId>com.github.thiagokimo</groupId>
     <artifactId>faker</artifactId>
-    <version>1.4.3</version>
+    <version>VERSION</version>
 </dependency>
 ```
 
