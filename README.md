@@ -4,20 +4,20 @@
 
 Faker provides fake data to your Android MPVs. Now it's very handy to make screenshots of your apps without worrying with Google Play copyright infringments, e.g [this app](https://play.google.com/store/apps/details?id=io.kimo.tmdb). Faker helps you to populate your views with random data quickly and painlessly.
 
-##Screenshots
+## Screenshots
 
 ![](https://raw.githubusercontent.com/thiagokimo/Faker/master/screenshots/random-data.png)
 ![](https://raw.githubusercontent.com/thiagokimo/Faker/master/screenshots/profile-sample-screenshot.png)
 
 
-##Demo
+## Demo
 The sample application (the source is in the **app** folder) has been published on Google Play to facilitate the access:
 
 [![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_small.png)](https://play.google.com/store/apps/details?id=io.kimo.faker)
 
 The demo app has a very clean MVP architecture based in the idea of [this post](http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/). Feel free to give me suggestions.
 
-##Setup
+## Setup
 
 Gradle:
 
@@ -58,9 +58,9 @@ If you use Maven, add this into your build file:
 </dependency>
 ```
 
-##Usage
+## Usage
 
-###The "lazy" way
+### The "lazy" way
 
 ``` java
 Faker.with(context)
@@ -71,7 +71,7 @@ Faker will figure out all views inside the one you passed to it and fill it with
 
 By default faker will fill **TextViews** with lorem ipsum, **ImageViews** with a random color, **CompoundButtons** with a random state (check or uncheck) and **ProgressBars** with a random progress value.
 
-###The specific way
+### The specific way
 
 ``` java
 Faker.with(context)
@@ -79,7 +79,7 @@ Faker.with(context)
       .componentMethod();
 ```
 
-###Targeting views
+### Targeting views
 
 If you want Faker to fill specific views inside your ViewGroup you can pass your target views like the example below
 
@@ -91,7 +91,7 @@ Faker.with(context)
 
 Check out all examples [here](https://github.com/thiagokimo/Faker/tree/master/app/src/main/java/io/kimo/faker/mvp/presenter).
 
-##Components
+## Components
 
 Faker is organized in components that provides you specific types of data. Here is a list of the current components:
 
@@ -104,7 +104,7 @@ Faker is organized in components that provides you specific types of data. Here 
 * [Color](https://github.com/thiagokimo/Faker/blob/master/faker-core/src/main/java/io/kimo/lib/faker/component/number/ColorComponent.java) - Generates attractive colors thanks to [lzyzsd](https://github.com/lzyzsd/AndroidRandomColor)!
 * [Address](https://github.com/thiagokimo/Faker/blob/master/faker-core/src/main/java/io/kimo/lib/faker/component/text/AddressComponent.java) - Gives random cities, countries, zipcodes, states and so on.
 
-##Contribuiting
+## Contribuiting
 
 1. Fork it
 2. Create your feature/bug-fix branch(`git checkout -b my-new-feature-or-fix`)
@@ -113,14 +113,14 @@ Faker is organized in components that provides you specific types of data. Here 
 
 Make sure you write tests for your code. Only code with passing tests will be accepted.
 
-###Components
+### Components
 
 You can add more components or improve the existing ones. For new components, make sure you also add an example in the demo app.
 
-###Localization
+### Localization
 You can help providing localized data to Faker components.
 
-##License
+## License
     
     Copyright 2011, 2012 Thiago Rocha
 
